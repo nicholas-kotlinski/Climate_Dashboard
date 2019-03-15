@@ -7,7 +7,7 @@ load_data <- function() {
 }
 
 # Add global datasets and variables
-map <- readOGR(dsn = "shapes/gadm36_PER_1_sp.rds")
+map <- readOGR(dsn = "shapes", layer="gadm36_PER_1_sp.rds")
 #map <- getData('GADM', country='PER', level=1)
 #crs(map) <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
 

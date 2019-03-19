@@ -1,11 +1,5 @@
-library(shiny); library(shinyjs); library(raster); library(rgdal); library(elevatr); library(sp); library(DT); library(leaflet)
-  
-load_data <- function() {
-  Sys.sleep(2)
-  hide("loading_page")
-  show("main_content")
-}
-
+library(shiny); library(shinyjs); library(raster); library(rgdal); library(sp);
+ 
 # Add global datasets and variables
 map <- readRDS("shapes/gadm36_PER_1_sp.rds")
 #map <- getData('GADM', country='PER', level=1)
@@ -38,15 +32,6 @@ names(wc) <- c("tmean","tmax","tmin","prec")
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  
-  useShinyjs(),
-  div(
-    id = "loading_page",
-    h1("Loading...")
-  ),
-  hidden(
-    div(
-      id = "main_content",
       
       # Application title
       titlePanel("Rapid Inventory Climate Information"),
@@ -89,14 +74,12 @@ ui <- fluidPage(
         )
       )
     )
-  )
-)
+ 
+
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # Define server logic
 server <- function(input, output) {
-  
-  load_data()
 
 # Display the raster map
   output$map <- renderPlot(
